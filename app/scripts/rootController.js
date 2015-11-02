@@ -24,7 +24,7 @@ angular.module('ggbApp')
     $scope.dataURL  = model.dataURL;
     $scope.ggbJS    = model.ggbJS;
 
-    $scope.data = { ggbs: model.ggbs };
+    $scope.data = { ggbs: model.ggbs, keys: model.keys };
     $http.get(model.dataURL + 'index.json')
       .success(function (data) {
         model.ggbs = data;

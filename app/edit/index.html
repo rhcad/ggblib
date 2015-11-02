@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>GGB</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  <base href="/">
+  <script src="../../ggb/jquery.min.js"></script>
+  <script src="../../ggb/angular.min.js"></script>
+  <style type="text/css">
+    a[href*="cnzz.com"], a[href*="clustrmaps.com"] {
+      display: none;
+    }
+  </style>
+</head>
+<body ng-app="app" ng-controller="MainCtrl">
+<article class="geogebraweb" data-param-showLogging="true" data-param-app="true" data-param-enableFileFeatures="false"
+         data-param-enableLabelDrags="true" data-param-useBrowserForJS="false">
+  <p class="pull-left">正在加载...</p>
+</article>
+<script>
+  angular.module('app', [])
+    .config(function($locationProvider) {
+      $locationProvider.html5Mode(true);
+    })
+    .controller('MainCtrl', function($scope, $location, $http) {
+      var id = $location.search().id,
+          article = angular.element('.geogebraweb');
+
+      $http.get('../../ggbdata/ggb64/' + id + '.b64')
+        .success(function (data) {
+          data = data.replace(/\n/g, '');
+          article.attr('data-param-ggbBase64', data);
+          angular.element('#web').attr('src', '../../ggb/web/web.nocache.js');
+        }).error(function() {
+          console.log('Fail to get %d.b64' % id);
+        });
+    });
+</script>
+<script id="web"></script>
+<script src="http://s4.cnzz.com/z_stat.php?id=1254723296&web_id=1254723296"></script>
+<a href="http://www3.clustrmaps.com/user/5af11e418"><img src="http://www3.clustrmaps.com/stats/maps-no_clusters/rhcad.com-thumb.jpg" alt="Locations of visitors to this page" /></a>
+</body>
+</html>
