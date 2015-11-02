@@ -1,0 +1,118 @@
+.browse-happy {
+  padding: 8px;
+  font-size: 20px;
+}
+
+a[href*="cnzz.com"],
+a[href*="clustrmaps.com"],
+img[src*="clustrmaps.com"] {
+  display: none;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+.navbar-brand {
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+#content div.search {
+  text-align: center;
+}
+
+#content input.search {
+  width: 280px;
+  display: inline-block;
+  text-align: center;
+}
+
+#content button.search {
+  margin-left: -40px;
+  border: none;
+  background: none;
+}
+
+.grid-item {
+  float: left;
+  width: 100%;
+  height: 300px;
+  padding: 4px;
+}
+
+@media (min-width: 420px) {
+  #content input.search {
+    width: 400px;
+  }
+
+  .grid-item {
+    width: 50%;
+  }
+}
+
+@media (min-width: 600px) {
+  #content input.search {
+    width: 500px;
+  }
+
+  .grid-item {
+    width: 33%;
+  }
+}
+
+@media (min-width: 768px) {
+  #content input.search {
+    width: 600px;
+  }
+
+  .grid-item {
+    width: 25%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-item {
+    width: 20%;
+  }
+}
+
+.thumbnail h5 {
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+.thumbnail-order {
+  float: right;
+  color: #ddd;
+}
+
+.field-inline {
+  display: inline-block;
+}
+
+.field-inline + .field-inline {
+  margin-left: 12px;
+}
+
+.key-inline + .key-inline {
+  margin-left: 8px;
+}
+
+@media (max-width: 420px) {
+  .field-inline {
+    display: block;
+  }
+
+  .field-inline + .field-inline {
+    margin-left: 0;
+  }
+}
+
+footer span {
+  display: inline-block;
+}
+
+.key-bar {
+  margin-bottom: 8px;
+}

@@ -1,0 +1,31 @@
+<div class="navbar navbar-default" ng-include="'views/navbar.html'"></div>
+<div class="container" id="content">
+  <form role="search">
+    <div class="form-group search">
+      <input type="text" class="form-control search" placeholder="搜索ggb资源" ng-model="q">
+      <button type="submit" class="btn btn-default search" ng-click="findGgb(q)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    </div>
+  </form>
+  <div class="key-bar">
+    <span class="key-inline" ng-repeat="k in data.keys | limitTo:20">
+        <a class="key-inline" ng-click="findGgb({q:'key:' + k.key})">{{k.key}}</a>
+        <sup><small>{{k.count}}</small></sup>
+    </span>
+  </div>
+</div>
+<div class="container-fluid" id="content">
+  <div class="grid">
+    <div class="grid-item" ng-repeat="g in items">
+      <div class="thumbnail" ng-click="preview(g.id)">
+        <img ng-src="{{dataURL + 'thumbnail/' + g.id + '.png'}}" alt="{{g.name}}">
+        <div class="caption">
+          <h5>{{g.name}}</h5>
+          <p><a class="btn btn-primary" role="button" ng-click="preview(g.id)">预览</a>
+            <a class="btn btn-default" role="button" ng-click="edit(g.id)">编辑</a>
+            <span class="thumbnail-order"><small>{{$index + 1}}</small></span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
