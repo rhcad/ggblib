@@ -16,7 +16,7 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-      <li ng-class="{active: isState('browse')}">
+      <li ng-class="{active: isState('browse') || isState('search')}">
         <a ui-sref="browse"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> 所有资源</a></li>
       <li ng-class="{active: isState('upload')}">
         <a ui-sref="upload"><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span> 上传文件</a></li>

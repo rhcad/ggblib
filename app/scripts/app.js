@@ -8,8 +8,13 @@ angular.module('ggbApp', ['ui.router', 'ngAnimate', 'mgcrea.ngStrap', 'pascalpre
         templateUrl: 'views/home/home.html',
         controller: 'HomeController'
       })
+      .state('search', {
+        url: '/browse?:q&:page',
+        templateUrl: 'views/home/browse.html',
+        controller: 'HomeController'
+      })
       .state('browse', {
-        url: '/browse?:q',
+        url: '/browse?:page',
         templateUrl: 'views/home/browse.html',
         controller: 'HomeController'
       })
@@ -29,7 +34,6 @@ angular.module('ggbApp', ['ui.router', 'ngAnimate', 'mgcrea.ngStrap', 'pascalpre
         controller: 'PreviewController'
       });
 
-    $urlRouterProvider.otherwise('/');
     localStorageServiceProvider.setPrefix('ggb');
   })
   .config(function($sceDelegateProvider) {

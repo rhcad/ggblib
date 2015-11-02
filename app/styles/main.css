@@ -116,3 +116,16 @@ footer span {
 .key-bar {
   margin-bottom: 8px;
 }
+
+.key-bar a.active {
+  background: #ddd;
+  text-decoration: underline;
+}
+
+.pagination {
+  margin: 0;
+}
+
+.pagination li.disabled {
+  color: #a0a0a0;
+}

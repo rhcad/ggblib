@@ -8,12 +8,37 @@
   </form>
   <div class="key-bar">
     <span class="key-inline" ng-repeat="k in data.keys | limitTo:20">
-        <a class="key-inline" ng-click="findGgb({q:'key:' + k.key})">{{k.key}}</a>
+        <a class="key-inline" ng-class="{active: 'key:' + k.key == q}"
+           ng-click="findGgb({q:'key:' + k.key})">{{k.key}}</a>
         <sup><small>{{k.count}}</small></sup>
+    </span>
+    <span class="key-inline">
+        <a class="key-inline" ng-click="go('browse')">所有</a>
+        <sup><small>{{data.ggbs.length}}</small></sup>
     </span>
   </div>
 </div>
+
 <div class="container-fluid" id="content">
+  <nav style="clear:both; text-align: center" ng-show="pages.length > 1">
+    <ul class="pagination">
+      <li ng-class="{disabled: currentPage <= 1}">
+        <a ng-click="goPage(currentPage - 1)" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li ng-repeat="p in pages track by $index"
+          ng-class="{ active: currentPage == 1+$index }">
+        <a ng-click="currentPage != 1+$index && goPage(1+$index)">{{1+$index}}</a>
+      </li>
+      <li ng-class="{disabled: currentPage >= pages.length}">
+        <a ng-click="goPage(currentPage + 1)" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
   <div class="grid">
     <div class="grid-item" ng-repeat="g in items">
       <div class="thumbnail" ng-click="preview(g.id)">
@@ -28,4 +53,23 @@
       </div>
     </div>
   </div>
+
+  <nav style="clear:both; text-align: center" ng-show="pages.length > 1">
+    <ul class="pagination">
+      <li ng-class="{disabled: currentPage <= 1}">
+        <a ng-click="goPage(currentPage - 1)" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li ng-repeat="p in pages track by $index"
+          ng-class="{ active: currentPage == 1+$index }">
+        <a ng-click="currentPage != 1+$index && goPage(1+$index)">{{1+$index}}</a>
+      </li>
+      <li ng-class="{disabled: currentPage >= pages.length}">
+        <a ng-click="goPage(currentPage + 1)" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 </div>

@@ -1,15 +1,19 @@
 <div class="navbar navbar-default" ng-include="'views/navbar.html'"></div>
+<div class="bs-docs-header">
+  <div class="container">
+    <h1>GGB课件资源</h1>
+    <p>基于GeoGebra的数学互动实验资源平台。</p>
+  </div>
+</div>
 <div class="container-fluid" id="content">
   <h3>最新的资源：</h3>
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-3" ng-repeat="g in data.ggbs | limitTo:4">
-      <div class="thumbnail">
+    <div class="col-xs-12 col-sm-6 col-md-3" ng-repeat="g in data.ggbs | limitTo:3">
+      <div class="thumbnail" ng-click="preview(g.id)">
         <img ng-src="{{dataURL + 'thumbnail/' + g.id + '.png'}}" alt="{{g.name}}">
         <div class="caption">
           <h4>{{g.name}}</h4>
           <p>{{g.keys.join(' • ')}}</p>
-          <p><a class="btn btn-primary" role="button" ng-click="preview(g.id)">预览</a>
-            <a class="btn btn-default" role="button" ng-click="edit(g.id)">编辑</a></p>
         </div>
       </div>
     </div>

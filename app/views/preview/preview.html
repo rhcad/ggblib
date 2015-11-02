@@ -6,7 +6,7 @@
   <p>
     <span class="field-inline">关键字:
       <span ng-repeat="k in ggb.info.keys">
-        <a class="key-inline" ng-click="go('browse', {q:'key:' + k})">{{k}}</a>
+        <a class="key-inline" ng-click="go('search', {q:'key:' + k})">{{k}}</a>
         <sup><small>{{ggbCount('key:' + k)}}</small></sup>
       </span>
     </span>
