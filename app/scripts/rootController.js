@@ -19,12 +19,12 @@ angular.module('ggbApp')
 
     model.debugging = window.location.port==='9000';
     model.dataURL   = model.debugging ? 'ggbdata/' : '../ggbdata/';
-    model.ggbJS     = model.debugging ? 'ggb/web/' : '../ggb/web/';
+    model.ggbJS     = 'http://rhcad.com/ggb/web/';
     $scope.rootURL  = model.debugging ? '' : 'http://rhcad.com/ggblib/';
     $scope.dataURL  = model.dataURL;
     $scope.ggbJS    = model.ggbJS;
 
-    $scope.data = { ggbs: model.ggbs };
+    $scope.data = { ggbs: model.ggbs, keys: model.keys };
     $http.get(model.dataURL + 'index.json')
       .success(function (data) {
         model.ggbs = data;

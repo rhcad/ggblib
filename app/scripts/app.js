@@ -34,6 +34,7 @@ angular.module('ggbApp', ['ui.router', 'ngAnimate', 'mgcrea.ngStrap', 'pascalpre
         controller: 'PreviewController'
       });
 
+    $urlRouterProvider.otherwise('/');
     localStorageServiceProvider.setPrefix('ggb');
   })
   .config(function($sceDelegateProvider) {
