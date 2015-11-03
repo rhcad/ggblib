@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # Usage:
-#   Type './import-ggb.py[ <ggb-path>[ <output-path>[ <user-id>]]]' to extract files and attributes from *.ggb.
+#   Type './import-ggb.py <ggb-path>[ <output-path>[ <user-id>]]' to extract files and attributes from *.ggb.
 # Author: Zhang Yungui <http://github.com/rhcad>, 2015.10.26
 
-import os, sys, zipfile, json, random, shutil, base64
+import os, sys, zipfile, json, random, base64
 import xml.etree.ElementTree as ET
 
 # Convert long integer to string.
@@ -20,8 +20,6 @@ def get_name_refid(name):
 
 # Extract thumbnail file and attributes from a ggb file.
 def scan_zip(fn, filename, info):
-    def make_ggb_filename(id):
-        return os.path.join(info['path'], 'ggb', '%ld.ggb' % id)
     def make_b64_filename(id):
         return os.path.join(info['path'], 'ggb64', '%ld.b64' % id)
 
@@ -34,7 +32,7 @@ def scan_zip(fn, filename, info):
         (name,refid) = get_name_refid(fn[:-4])    # Remove the extension '.ggb'
 
         id = random.uniform(10000, 99999)
-        while id in info['ids'] or (info['path'] and os.path.exists(make_ggb_filename(id))):
+        while id in info['ids'] or (info['path'] and os.path.exists(make_b64_filename(id))):
             id = random.uniform(10000, 99999)
         info['ids'].append(id)
 
@@ -62,7 +60,6 @@ def scan_zip(fn, filename, info):
             png_file = os.path.join(info['path'], 'thumbnail', '%ld.png' % id)
             open(png_file, 'wb').write(thumbnail)
 
-            shutil.copy(filename, make_ggb_filename(id))
             info['head'].append(prop)
 
             fin = open(filename, "rb")
@@ -80,6 +77,7 @@ def scan_dir(src_dir, info):
         if fn[0]=='.' or fn[0]=='~' or fn=='ggb' or fn=='output':
             continue
         if os.path.isdir(filename):
+            # Folder name which begins with two digits will be divided into user id and keyword.
             old_user = info['user']
             if len(fn) > 1 and fn[0].isdigit() and fn[1].isdigit() and (len(fn)==2 or not fn[2].isdigit()):
                 info['user'] = fn[0:2]
@@ -106,7 +104,6 @@ if __name__=="__main__":
     else:
         mkdir_needed(out_dir)
         mkdir_needed(os.path.join(out_dir, 'thumbnail'))
-        mkdir_needed(os.path.join(out_dir, 'ggb'))
         mkdir_needed(os.path.join(out_dir, 'ggb64'))
 
     info = { 'path': out_dir, 'count': 0, 'head': [], 'ids': [], 'keys': [],
