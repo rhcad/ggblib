@@ -11,8 +11,8 @@ import xml.etree.ElementTree as ET
 def l2a(x):
     return repr(long(x))[0:-1]
 
-# Get name and reference id from a file name
-def get_name_refid(name):
+# Get title and reference id from a file name
+def get_title_refid(name):
     n = 0
     while n < len(name) and name[n].isdigit():
         n = n + 1
@@ -29,7 +29,7 @@ def scan_zip(fn, filename, info):
     ggb = zipfile.ZipFile(filename, 'r')
     try:
         info['count'] = info['count'] + 1
-        (name,refid) = get_name_refid(fn[:-4])    # Remove the extension '.ggb'
+        (title,refid) = get_title_refid(fn[:-4])    # Remove the extension '.ggb'
 
         id = random.uniform(10000, 99999)
         while id in info['ids'] or (info['path'] and os.path.exists(make_b64_filename(id))):
@@ -40,10 +40,10 @@ def scan_zip(fn, filename, info):
         xml = ET.fromstring(ggb.read('geogebra.xml'))
         win = xml.findall('./gui/window')
         win = win[0].attrib if len(win) > 0 else {}
-        print('%03d\t%ld\t%s\t%d KB\t%s x %s\t%s' % (info['count'], id, name, kb, win['width'], win['height'], info['user']))
+        print('%03d\t%ld\t%s\t%d KB\t%s x %s\t%s' % (info['count'], id, title, kb, win['width'], win['height'], info['user']))
 
         prop = { 'id': l2a(id),
-                 'name': name,
+                 'title': title,
                  'keys': list(info['keys']),
                  'user': info['user'],
                  'kb': kb,
@@ -108,7 +108,7 @@ if __name__=="__main__":
 
     info = { 'path': out_dir, 'count': 0, 'head': [], 'ids': [], 'keys': [],
              'user': sys.argv[3] if len(sys.argv) > 3 else 11 }
-    print('order\tid\tname\tKB\twidth x height\tuser')
+    print('order\tid\ttitle\tKB\twidth x height\tuser')
     scan_dir(src_dir, info)
     if out_dir and info['count'] > 0:
         out_file = open(index_file, 'w')

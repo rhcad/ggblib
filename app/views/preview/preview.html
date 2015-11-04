@@ -1,6 +1,6 @@
 <div class="navbar navbar-default" ng-include="'views/navbar.html'"></div>
 <div class="container">
-  <p><span class="field-inline">标题: {{ggb.info.name}}</span>
+  <p><span class="field-inline">标题: {{ggb.info.title}}</span>
     <a class="btn btn-default" role="button" ng-click="edit(ggb.id)">编辑</a></p>
   </p>
   <p>
@@ -13,7 +13,7 @@
     <span class="field-inline">来源:
       <a data-placement="bottom" data-title="来源" data-autoClose="true" bs-popover
          data-content="{{getUser(ggb.info.user).url + ' ' + ggb.info.refid}}">
-        {{getUser(ggb.info.user).name}}</a></span>
+        {{getUser(ggb.info.user).title}}</a></span>
   </p>
 </div>
 <div class="container-fluid" id="content">

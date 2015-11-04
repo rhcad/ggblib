@@ -10,6 +10,7 @@ angular.module('ggbApp')
     $scope.items = model.findGgb(q && q.split(/(\s|\+|;|,)+/));
     $scope.pages = new Array(Math.ceil($scope.items.length / max_count));
     $scope.currentPage = page ? Math.max(1, Math.min(page, $scope.pages.length)) : 1;
+
     var start = ($scope.currentPage - 1) * max_count;
     $scope.items = $scope.items.slice(start, start + max_count);
 

@@ -20,37 +20,10 @@
 </div>
 
 <div class="container-fluid" id="content">
-  <nav style="clear:both; text-align: center" ng-show="pages.length > 1">
-    <ul class="pagination">
-      <li ng-class="{disabled: currentPage <= 1}">
-        <a ng-click="goPage(currentPage - 1)" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li ng-repeat="p in pages track by $index"
-          ng-class="{ active: currentPage == 1+$index }">
-        <a ng-click="currentPage != 1+$index && goPage(1+$index)">{{1+$index}}</a>
-      </li>
-      <li ng-class="{disabled: currentPage >= pages.length}">
-        <a ng-click="goPage(currentPage + 1)" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-
-  <div class="grid">
-    <div class="grid-item" ng-repeat="g in items">
-      <div class="thumbnail" ng-click="preview(g.id)">
-        <img ng-src="{{dataURL + 'thumbnail/' + g.id + '.png'}}" alt="{{g.name}}">
-        <div class="caption">
-          <h5>{{g.name}}</h5>
-          <p><a class="btn btn-primary" role="button" ng-click="preview(g.id)">预览</a>
-            <a class="btn btn-default" role="button" ng-click="edit(g.id)">编辑</a>
-            <span class="thumbnail-order"><small>{{$index + 1}}</small></span>
-          </p>
-        </div>
-      </div>
+  <div deckgrid class="deckgrid" source="items">
+    <div class="a-card" ui-sref="preview({id:'{{card.id}}'})">
+      <h5>{{card.title}}</h5>
+      <img src="" data-ng-src="{{card.src}}">
     </div>
   </div>
 

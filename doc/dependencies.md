@@ -26,12 +26,12 @@
 
 ## Packages for app running
 
-- angular
-- bootstrap
-- masonry
-- angular-ui-router
-- angular-strap
+- angular: The JavaScript MVC framework.
+- angular-ui-router: The de-facto solution to flexible routing with nested views.
+- bootstrap: The most popular responsive framework.
+- angular-strap: Twitter Bootstrap directives for AngularJS.
+- angular-deckgrid: A lightweight masonry-like grid for AngularJS.
+- angular-translate: i18n for AngularJS.
+- angular-local-storage: HTML5 local storage for AngularJS.
 - angular-motion
 - angular-animate
-- angular-translate
-- angular-local-storage

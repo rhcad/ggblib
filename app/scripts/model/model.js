@@ -21,14 +21,16 @@ angular.module('ggbApp')
       },
 
       findGgb: function (q, ggbs) {
+        var self = this;
         ggbs = ggbs || this.ggbs;
         return !q ? ggbs : ggbs.slice(0).filter(function (ggb) {
           function can_find(str) {
             var isKey = str.indexOf('key:') === 0,
                 key = isKey ? str.substr(4) : str;
 
+            ggb.src = self.dataURL + 'thumbnail/' + ggb.id + '.png';
             return ggb.keys.indexOf(key) >= 0 ||
-              (!isKey && ggb.name.indexOf(key) >= 0);
+              (!isKey && ggb.title.indexOf(key) >= 0);
           }
 
           var accept = false;
