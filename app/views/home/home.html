@@ -10,9 +10,9 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-3" ng-repeat="g in data.ggbs | limitTo:3">
       <div class="thumbnail" ng-click="preview(g.id)">
-        <img ng-src="{{dataURL + 'thumbnail/' + g.id + '.png'}}" alt="{{g.name}}">
+        <img ng-src="{{g.src}}" alt="{{g.title}}">
         <div class="caption">
-          <h4>{{g.name}}</h4>
+          <h4>{{g.title}}</h4>
           <p>{{g.keys.join(' • ')}}</p>
         </div>
       </div>

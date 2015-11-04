@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('ggbApp', ['ui.router', 'ngAnimate', 'mgcrea.ngStrap', 'pascalprecht.translate', 'LocalStorageModule'])
+angular.module('ggbApp', ['ui.router', 'ngAnimate', 'mgcrea.ngStrap',
+      'pascalprecht.translate', 'LocalStorageModule', 'akoenig.deckgrid'])
   .config(function($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
     $stateProvider
       .state('home', {
