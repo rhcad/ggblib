@@ -1,17 +1,17 @@
 <div class="navbar navbar-default" ng-include="'views/navbar.html'"></div>
 <div class="container">
-  <p><span class="field-inline">标题: {{ggb.info.title}}</span>
+  <p><span class="field-inline">{{'Title'|translate}}: {{ggb.info.title}}</span>
     <a class="btn btn-default" role="button" ng-click="edit(ggb.id)">编辑</a></p>
   </p>
   <p>
-    <span class="field-inline">关键字:
+    <span class="field-inline">{{'Keywords'|translate}}:
       <span ng-repeat="k in ggb.info.keys">
         <a class="key-inline" ng-click="go('search', {q:'key:' + k})">{{k}}</a>
         <sup><small>{{ggbCount('key:' + k)}}</small></sup>
       </span>
     </span>
-    <span class="field-inline">来源:
-      <a data-placement="bottom" data-title="来源" data-autoClose="true" bs-popover
+    <span class="field-inline">{{'Source'|translate}}:
+      <a data-placement="bottom" data-title="{{'Source'|translate}}" data-autoClose="true" bs-popover
          data-content="{{getUser(ggb.info.user).url + ' ' + ggb.info.refid}}">
         {{getUser(ggb.info.user).title}}</a></span>
   </p>
@@ -21,6 +21,6 @@
            data-param-showLogging="true" data-param-useBrowserForJS="false"
            data-param-enableLabelDrags="false" data-param-useBrowserForJS="false"
            data-param-enableRightClick="false" data-param-enableShiftDragZoom="false">
-    <p class="pull-left">正在加载...</p>
+    <p class="pull-left">{{'Loading'|translate}}...</p>
   </article>
 </div>
