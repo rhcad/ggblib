@@ -2,8 +2,9 @@
 <div class="container" id="content">
   <form role="search">
     <div class="form-group search">
-      <input type="text" class="form-control search" placeholder="搜索ggb资源" ng-model="q">
-      <button type="submit" class="btn btn-default search" ng-click="findGgb(q)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+      <input type="text" class="form-control search" placeholder="{{'SearchPlaceholder'|translate}}" ng-model="q">
+      <button type="submit" class="btn btn-default search" ng-click="findGgb(q)">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
     </div>
   </form>
   <div class="key-bar">
@@ -13,7 +14,7 @@
         <sup><small>{{k.count}}</small></sup>
     </span>
     <span class="key-inline">
-        <a class="key-inline" ng-click="go('browse')">所有</a>
+        <a class="key-inline" ng-click="go('browse')">{{'All'|translate}}</a>
         <sup><small>{{data.ggbs.length}}</small></sup>
     </span>
   </div>
