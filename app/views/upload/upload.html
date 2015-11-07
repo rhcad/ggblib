@@ -1,4 +1,47 @@
 <div class="navbar navbar-default" ng-include="'views/navbar.html'"></div>
-<div class="container-fluid" id="content">
-  <p style="text-align: center">{{'PageNotImplement'|translate}}</p>
+<div class="container" id="content">
+  <form name="meta">
+    <span>{{'SelGgbFile'|translate}}: </span>
+    <input type="file" onchange="angular.element(this).scope().fileSelected(this.files[0])"><br>
+  </form>
+  <form role="title">
+    <div class="form-group">
+      <input type="text" class="form-control keyword" placeholder="{{'Title'|translate}}" ng-model="ggbProp.title">
+    </div>
+  </form>
+  <form role="keyword">
+    <div class="form-group keyword">
+      <input type="text" class="form-control keyword" placeholder="{{'KeywordPlaceholder'|translate}}" ng-model="tmp.keyword">
+      <button type="submit" class="btn keyword" ng-click="tmp.keyword = addKeyword(tmp.keyword, ggbProp.keys)">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+    </div>
+  </form>
+  <p>
+  <span class="field-inline">{{'Keywords'|translate}}:
+    <span class="key-inline" ng-repeat="k in ggbProp.keys" ng-click="tmp.keyword=k; removeKeyword(k, ggbProp.keys);">{{k}}
+      <sup><small>{{ggbCount('key:' + k)}}</small></sup>
+      <small><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></small>
+    </span>
+    <span class="key-inline new-keyword" ng-if="tmp.keyword.length > 0">{{tmp.keyword}}
+      <sup><small>{{ggbCount('key:' + tmp.keyword)}}</small></sup>
+    </span>
+    <span class="key-inline new-keyword" ng-if="!tmp.keyword.length && !ggbProp.keys.length">?</span>
+  </span>
+  </p>
+  <form role="size">
+    <div class="form-group">
+      <input type="checkbox" class="field-inline" ng-model="ggbProp.enableDragZoom"> {{'EnableDragZoom'|translate}}</input>
+      <input type="checkbox" class="field-inline" ng-model="ggbProp.enableLabelDrags"> {{'EnableLabelDrags'|translate}}</input>
+      <span class="field-inline number">{{'CanvasWidth'|translate}}: <input type="number" ng-model="ggbProp.width"></span>
+      <span class="field-inline number">{{'CanvasHeight'|translate}}: <input type="number" ng-model="ggbProp.height"></span>
+    </div>
+  </form>
+</div>
+<div class="container-fluid">
+  <article id="ggb-preview" class="geogebrawebs" data-param-showLogging="true"
+           data-param-useBrowserForJS="false" data-param-enableRightClick="false"
+           data-param-width="656" data-param-height="460"
+           data-param-enableShiftDragZoom="{{!!ggbProp.enableDragZoom}}"
+           data-param-enableLabelDrags="{{!!ggbProp.enableLabelDrags}}">
+  </article>
 </div>

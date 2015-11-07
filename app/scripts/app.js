@@ -5,7 +5,7 @@ angular.module('ggbApp', ['ui.router', 'ngAnimate', 'mgcrea.ngStrap',
   .config(function($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
     $stateProvider
       .state('home', {
-        url: '/',
+        url: '/home',
         templateUrl: 'views/home/home.html',
         controller: 'HomeController'
       })
@@ -29,10 +29,21 @@ angular.module('ggbApp', ['ui.router', 'ngAnimate', 'mgcrea.ngStrap',
         templateUrl: 'views/login/login.html',
         controller: 'LoginController'
       })
+      .state('debug', {
+        url: '/debug',
+        templateUrl: 'views/home/debug.html'
+      })
       .state('preview', {
         url: '/preview/:id',
         templateUrl: 'views/preview/preview.html',
         controller: 'PreviewController'
+      })
+      .state('preview.showProp', {
+        templateUrl: '../views/preview/showProp.html'
+      })
+      .state('preview.editProp', {
+        templateUrl: '../views/preview/editProp.html',
+        controller: 'EditPropController'
       });
 
     $urlRouterProvider.otherwise('/browse');

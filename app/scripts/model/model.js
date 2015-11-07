@@ -29,6 +29,8 @@ angular.module('ggbApp')
                 key = isKey ? str.substr(4) : str;
 
             ggb.src = self.dataURL + 'thumbnail/' + ggb.id + '.png';
+            ggb.width = parseInt(ggb.width);
+            ggb.height = parseInt(ggb.height);
             return ggb.keys.indexOf(key) >= 0 ||
               (!isKey && ggb.title.indexOf(key) >= 0);
           }
@@ -51,6 +53,7 @@ angular.module('ggbApp')
       collectKeys: function (ggbs) {
         var i, j, key, keys = [], self = this;
 
+        ggbs = ggbs || self.ggbs;
         for (i in ggbs) {
           for (j in ggbs[i].keys) {
             key = ggbs[i].keys[j];

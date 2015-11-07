@@ -10,9 +10,7 @@ angular.module('ggbApp')
         article = angular.element('#ggb-preview');
 
     $scope.ggb = { id: id, info: info };
-    $scope.ggbCount = function (q, ggbs) {
-      return model.findGgb(q, ggbs).length;
-    };
+    $scope.go('.showProp');
 
     if (info && article.length === 1) {
       model.ggbid = id;
@@ -30,4 +28,24 @@ angular.module('ggbApp')
           console.log('Fail to get %d.b64' % id);
         });
     }
+  });
+
+angular.module('ggbApp')
+  .controller('EditPropController', function($scope, model, ggbProp) {
+    'use strict';
+
+    $scope.tmp = {};
+    $scope.ggbProp = angular.copy($scope.ggb.info);
+    $scope.addKeyword = ggbProp.addKeyword;
+    $scope.removeKeyword = ggbProp.removeKeyword;
+
+    $scope.save = function() {
+      var info = ggbProp.saveProp($scope.ggbProp);
+      angular.copy(info, $scope.ggb.info);
+
+      model.keys = model.collectKeys();
+      $scope.data.keys = model.keys;
+
+      $scope.go('preview.showProp');
+    };
   });

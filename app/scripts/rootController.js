@@ -17,6 +17,10 @@ angular.module('ggbApp')
       );
     };
 
+    $scope.ggbCount = function (q, ggbs) {
+      return model.findGgb(q, ggbs).length;
+    };
+
     model.debugging = window.location.port==='9000';
     model.dataURL   = model.debugging ? 'ggbdata/' : '../ggbdata/';
     model.ggbJS     = model.debugging ? 'ggb/web/' : '../ggb/web/';
@@ -24,11 +28,11 @@ angular.module('ggbApp')
     $scope.dataURL  = model.dataURL;
     $scope.ggbJS    = model.ggbJS;
 
-    $scope.data = { ggbs: model.ggbs, keys: model.keys };
+    $scope.data = { ggbs: model.ggbs, keys: model.keys, debugging: model.debugging };
     $http.get(model.dataURL + 'index.json')
       .success(function (data) {
         model.ggbs = data;
-        model.keys = model.collectKeys(data);
+        model.keys = model.collectKeys();
         $scope.data.ggbs = data;
         $scope.data.keys = model.keys;
       }).error(function() {
@@ -45,4 +49,5 @@ angular.module('ggbApp')
     $scope.getUser = function(id) {
       return model.getUser(id) || {};
     };
+
   });
