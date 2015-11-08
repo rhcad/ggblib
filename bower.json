@@ -16,7 +16,8 @@
     "angular-animate": "~1.4.7",
     "angular-translate": "~2.8.1",
     "angular-local-storage": "~0.2.3",
-    "angular-deckgrid": "~0.5.0"
+    "angular-deckgrid": "~0.5.0",
+    "jszip": "~2.5.0"
   },
   "devDependencies": {},
   "appPath": "app",
