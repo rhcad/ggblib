@@ -38,6 +38,7 @@ body {
 
 #content input.search {
   width: 280px;
+  padding-right: 34px;
   display: inline-block;
   text-align: center;
 }
@@ -51,6 +52,7 @@ body {
 input.keyword {
   display: inline;
   max-width: 720px;
+  padding-right: 34px;
 }
 
 button.keyword {
@@ -61,7 +63,7 @@ button.keyword {
 }
 
 .new-keyword {
-  color: #aaa;
+  color: #888;
 }
 
 @media (min-width: 420px) {
@@ -182,12 +184,16 @@ button.keyword {
   padding-right: 10px;
 }
 
-.key-inline {
-  white-space: nowrap;
-}
-
 .key-inline + .key-inline {
   margin-left: 8px;
+}
+
+.key-bar a:hover {
+  background: #eee;
+}
+
+.key-bar a:hover + sup {
+  background: #eee;
 }
 
 @media (max-width: 420px) {

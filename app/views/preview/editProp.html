@@ -22,16 +22,18 @@
       <sup><small>{{ggbCount('key:' + k)}}</small></sup>
       <small><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></small>
     </span>
-    <span class="key-inline new-keyword" ng-if="tmp.keyword.length > 0">{{tmp.keyword}}
+    <span class="key-inline new-keyword" ng-if="tmp.keyword.length > 0"
+          ng-click="tmp.keyword = addKeyword(tmp.keyword, ggbProp.keys)">{{tmp.keyword}}
       <sup><small>{{ggbCount('key:' + tmp.keyword)}}</small></sup>
+      <small><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></small>
     </span>
   </span>
 </p>
 <form role="size">
   <div class="form-group">
-    <input type="checkbox" class="field-inline" ng-model="ggbProp.enableDragZoom"> {{'EnableDragZoom'|translate}}</input>
-    <input type="checkbox" class="field-inline" ng-model="ggbProp.enableLabelDrags"> {{'EnableLabelDrags'|translate}}</input>
-    <span class="field-inline number">{{'CanvasWidth'|translate}}: <input type="number" ng-model="ggbProp.width"></span>
-    <span class="field-inline number">{{'CanvasHeight'|translate}}: <input type="number" ng-model="ggbProp.height"></span>
+    <span class="field-inline"><input type="checkbox" ng-model="ggbProp.enableDragZoom"> {{'EnableDragZoom'|translate}}</span>
+    <span class="field-inline"><input type="checkbox" ng-model="ggbProp.enableLabelDrags"> {{'EnableLabelDrags'|translate}}</span>
+    <span class="field-inline">{{'CanvasWidth'|translate}}: <input type="number" ng-model="ggbProp.width"></span>
+    <span class="field-inline">{{'CanvasHeight'|translate}}: <input type="number" ng-model="ggbProp.height"></span>
   </div>
 </form>
