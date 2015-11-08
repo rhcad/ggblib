@@ -30,6 +30,7 @@ angular.module('ggbApp')
         'SelGgbFile': '选择一个ggb文件 (*.ggb)',
         'CanvasWidth': '画布宽度',
         'CanvasHeight': '画布高度',
+        'Submit': '提交',
         'PageNotImplement': '本页面正在开发中，敬请期待。'
       })
       .translations('en', {
@@ -58,6 +59,7 @@ angular.module('ggbApp')
         'SelGgbFile': 'Select a GeoGebra file (*.ggb)',
         'CanvasWidth': 'Canvas width',
         'CanvasHeight': 'Canvas height',
+        'Submit': 'Submit',
         'PageNotImplement': 'This page is under development. Thank you.'
       })
       .preferredLanguage(!lang || lang.toLowerCase().indexOf('cn') >= 0 ? 'cn' : 'en')

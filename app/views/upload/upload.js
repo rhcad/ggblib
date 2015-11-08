@@ -34,9 +34,19 @@ angular.module('ggbApp')
       $scope.ggbProp.height = size.height;
       article.attr('data-param-width', size.width);
       article.attr('data-param-height', size.height);
+      readThumbnail(zip);
+    }
+
+    function readThumbnail(zip) {
+      var zobj = zip.file('geogebra_thumbnail.png');
+      if (!zobj) {
+        return;
+      }
+      var blob = new Blob([zobj.asArrayBuffer()], {type: 'image/png'});
     }
 
     function loadContent(data, article) {
+      $scope.tmp.base64 = data;
       article.attr('data-param-ggbBase64', data);
       if (window.webSimple) {
         angular.element('.geogebraweb-dummy-invisible').remove();
@@ -52,4 +62,11 @@ angular.module('ggbApp')
       str = str.replace(/=/g, ':').replace(' h', ',h').replace(/"/g, '');
       return JSON.parse(str.replace('width', '\"width\"').replace('height', '\"height\"'));
     }
+
+    $scope.submit = function() {
+      var info = ggbProp.saveProp($scope.ggbProp);
+
+      if (info && window.ggbApplet) {
+      }
+    };
   });
