@@ -39,10 +39,10 @@ angular.module('ggbApp', ['ui.router', 'ngAnimate', 'mgcrea.ngStrap',
         controller: 'PreviewController'
       })
       .state('preview.showProp', {
-        templateUrl: '../views/preview/showProp.html'
+        templateUrl: 'views/preview/showProp.html'
       })
       .state('preview.editProp', {
-        templateUrl: '../views/preview/editProp.html',
+        templateUrl: 'views/preview/editProp.html',
         controller: 'EditPropController'
       });
 
