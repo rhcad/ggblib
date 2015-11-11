@@ -1,3 +1,6 @@
+// Copyright (c) 2015 Zhang Yungui, GNU GPL v3 licensed.
+//
+
 angular.module('ggbApp')
   .controller('HomeController', function($scope, $stateParams, model) {
     'use strict';

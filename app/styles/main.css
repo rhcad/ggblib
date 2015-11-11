@@ -27,12 +27,18 @@ body {
   padding-bottom: 9px;
 }
 
+.bs-docs-header {
+  margin-top: -20px;
+  padding-top: 70px;
+}
+
 #content div.search {
   text-align: center;
 }
 
 #content input.search {
   width: 280px;
+  padding-right: 34px;
   display: inline-block;
   text-align: center;
 }
@@ -43,9 +49,29 @@ body {
   background: none;
 }
 
+input.keyword {
+  display: inline;
+  max-width: 720px;
+  padding-right: 34px;
+}
+
+button.keyword {
+  margin-top: -32px;
+  float: right;
+  border: none;
+  background: none;
+}
+
+.new-keyword {
+  color: #888;
+}
+
 @media (min-width: 420px) {
   #content input.search {
     width: 400px;
+  }
+  input.title-input {
+    width: 360px;
   }
 }
 
@@ -53,11 +79,22 @@ body {
   #content input.search {
     width: 500px;
   }
+  input.title-input {
+    width: 520px;
+  }
 }
 
 @media (min-width: 768px) {
   #content input.search {
     width: 600px;
+  }
+}
+
+@media (min-width: 992px) {
+  button.keyword {
+    float: none;
+    margin-top: 0;
+    margin-left: -40px;
   }
 }
 
@@ -131,14 +168,32 @@ body {
 
 .field-inline {
   display: inline-block;
+  white-space: nowrap;
+}
+
+.field-inline + .btn {
+  margin-left: 8px;
 }
 
 .field-inline + .field-inline {
   margin-left: 12px;
 }
 
+.field-inline > a.btn {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .key-inline + .key-inline {
   margin-left: 8px;
+}
+
+.key-bar a:hover {
+  background: #eee;
+}
+
+.key-bar a:hover + sup {
+  background: #eee;
 }
 
 @media (max-width: 420px) {
@@ -170,4 +225,14 @@ footer span {
 
 .pagination li.disabled {
   color: #a0a0a0;
+}
+
+span + input[type="file"] {
+  display: inline-block;
+  margin-left: 4px;
+}
+
+input[type="number"] {
+  width: 60px;
+  text-align: center;
 }

@@ -1,9 +1,10 @@
+<!-- Copyright (c) 2015 Zhang Yungui, GNU GPL v3 licensed. -->
 <div class="navbar navbar-default" ng-include="'views/navbar.html'"></div>
 <div class="container" id="content">
   <form role="search">
     <div class="form-group search">
       <input type="text" class="form-control search" placeholder="{{'SearchPlaceholder'|translate}}" ng-model="q">
-      <button type="submit" class="btn btn-default search" ng-click="findGgb(q)">
+      <button type="submit" class="btn search" ng-click="findGgb(q)">
         <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
     </div>
   </form>
